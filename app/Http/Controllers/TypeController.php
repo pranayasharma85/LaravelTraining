@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\Student;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
-class BooksController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +22,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-//        return("this is only simple example");
-        return view('backend.Books.Create');
-
-
-        //
+        return view( 'backend.type.create');
     }
 
     /**
@@ -31,7 +30,8 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $type =  Type::create($request->all());
+        dd($type);
     }
 
     /**

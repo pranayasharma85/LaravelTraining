@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
-class studentsController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +21,7 @@ class studentsController extends Controller
      */
     public function create()
     {
-//        return("this is just the student controller");
-return view('backend.students.create');
-
-        //
+        return view('backend.student.create');
     }
 
     /**
@@ -30,7 +29,8 @@ return view('backend.students.create');
      */
     public function store(Request $request)
     {
-        //
+        $student =  Student::create($request->all());
+        dd($student);
     }
 
     /**

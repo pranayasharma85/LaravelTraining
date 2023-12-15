@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BooksController;
-use App\Http\Controllers\studentsController;
-
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\TypeController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +22,20 @@ use App\Http\Controllers\studentsController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('backend/Books/create',[BooksController::class,'create']);
-Route::get('backend/students/create',[studentsController::class,'create']);
 
 
 
+Route::get('backend/student/create', [StudentController::class, 'create']);
+Route::post('backend/student', [StudentController::class, 'store'])->name('backend.student.store');
+
+Route::get('backend/borrow/create', [BorrowController::class, 'create']);
+Route::post('backend/borrow', [BorrowController::class, 'store'])->name('backend.borrow.store');
+
+Route::get('backend/author/create', [AuthorController::class, 'create']);
+Route::post('backend/author', [AuthorController::class, 'store'])->name('backend.author.store');
+
+Route::get('backend/book/create', [BookController::class, 'create']);
+Route::post('backend/book', [BookController::class, 'store'])->name('backend.book.store');
+
+Route::get('backend/type/create', [TypeController::class, 'create'])->name('backend.type.create');;
+Route::post('backend/type', [TypeController::class, 'store'])->name('backend.type.store');
