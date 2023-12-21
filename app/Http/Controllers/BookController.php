@@ -13,6 +13,8 @@ class BookController extends Controller
      */
     public function index()
     {
+        $books=Book::all();
+        return view('backend.book.index',compact('books'));
         //
     }
 
@@ -38,30 +40,39 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
+        $book=Book::find($id);
+        return view('backend.book.show',compact('book'));
         //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $bookId)
     {
+        $book = Book::find($bookId);
+        return view('backend.book.edit', compact('book'));
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $bookId)
     {
+        $book = Book::find($bookId);
+        $book->update($request->all());
+        return redirect()->route('backend.book.index');
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $bookId)
     {
-        //
+        $book =Book::find($bookId);
+        $book->delete();
+        return redirect()->route('backend.book.index');
     }
 }

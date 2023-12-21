@@ -14,6 +14,8 @@ class TypeController extends Controller
      */
     public function index()
     {
+        $types=Type::all();
+        return view('backend.type.index',compact('types'));
         //
     }
 
@@ -39,30 +41,40 @@ class TypeController extends Controller
      */
     public function show(string $id)
     {
+        $type=Type::find($id);
+        return view('backend.type.show',compact('type'));
         //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $typeId)
     {
+        $type=Type::find($typeId);
+        return view('backend.type.edit', compact('type'));
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $typeId)
     {
+        $type =Type::find($typeId);
+        $type->update($request->all());
+        return redirect()->route('backend.type.index');
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $typeId)
     {
+        $type=Type::find($typeId);
+        $type->delete();
+        return redirect()->route('backend.type.index');
         //
     }
 }

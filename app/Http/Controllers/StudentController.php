@@ -13,6 +13,8 @@ class StudentController extends Controller
      */
     public function index()
     {
+        $students=Student::all();
+        return view('backend.student.index',compact('students'));
         //
     }
 
@@ -38,30 +40,41 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
+        $student=Student::find($id);
+        return view('backend.student.show',compact('student'));
         //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $studentId)
     {
+        $student = Student::find($studentId);
+        return view('backend.student.edit', compact('student'));
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $studentId)
     {
+        $student =Student::find($studentId);
+        $student->update($request->all());
+        return redirect()->route('backend.student.index');
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $studentId)
     {
+        $student=Student::find($studentId);
+        $student->delete();
+        return redirect()->route('backend.student.index');
+
         //
     }
 }
