@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BookCreateRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BookCreateRequest $request)
     {
         $book =  Book::create($request->all());
         dd($book);
