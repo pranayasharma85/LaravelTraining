@@ -21,6 +21,9 @@
             <input type="number" id="studentId"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                    name="studentId" required>
+            @error('studentId')
+            {{$message}}
+            @enderror
         </div>
         <div class="mb-5">
             <label for="bookId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Book Id
@@ -28,6 +31,9 @@
             <input type="number" id="bookId" name="bookId"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                    required>
+            @error('bookId')
+            {{$message}}
+            @enderror
         </div>
         <div class="mb-5">
             <label for="takenDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Taken
@@ -35,11 +41,17 @@
             <input type="date" id="takenDate" name="takenDate"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                    required>
+            @error('takenDate')
+            {{$message}}
+            @enderror
         </div>
         <div class="mb-5">
             <label for="broughtDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brought
                 Date
                 Id</label>
+            @error('broughtDate')
+            {{$message}}
+            @enderror
             <input type="date" id="broughtDate" name="broughtDate"
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                    required>
